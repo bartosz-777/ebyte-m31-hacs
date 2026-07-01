@@ -7,7 +7,7 @@ from homeassistant.const import CONF_HOST, CONF_PORT
 
 DOMAIN = "ebyte_m31"
 
-DEFAULT_HOST = "192.168.1.100"
+DEFAULT_HOST = ""
 DEFAULT_PORT = 502
 
 MODBUS_ADDRESS = 0
