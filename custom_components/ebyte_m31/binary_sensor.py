@@ -16,7 +16,7 @@ async def async_setup_entry(
     entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    coordinator: EbyteM31Coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
+    coordinator: EbyteM31Coordinator = hass.data[DOMAIN][entry.entry_id]["standard"]
     async_add_entities(
         EbyteM31BinarySensor(coordinator, entry.entry_id, defn)
         for defn in BINARY_SENSOR_DEFINITIONS
