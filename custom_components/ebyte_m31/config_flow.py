@@ -45,9 +45,30 @@ class EbyteM31ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 errors["base"] = "unknown"
             finally:
                 await hub.async_close()
-
         return self.async_show_form(
             step_id="user",
             data_schema=STEP_USER_DATA_SCHEMA,
             errors=errors,
+        )
+    @staticmethod
+    @callback
+    def async_get_options_flow(config_entry) -> EbyteM31OptionsFlowHandler:
+        """Get the options flow for this handler."""
+        return EbyteM31OptionsFlowHandler()
+    
+class EbyteM31OptionsFlowHandler(config_entries.OptionsFlow):
+    """Handle Ebyte M31 options."""
+
+    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
+        """Initialize Ebyte M31 options flow."""
+        self.config_entry = config_entry
+
+    async def async_step_init(self, user_input: dict[str, Any] | None = None) -> FlowResult:
+        """Manage the options."""
+        if user_input is not None:
+            return self.async_create_entry(title="", data=user_input)
+
+        return self.async_show_form(
+            step_id="init",
+            data_schema=STEP_USER_DATA_SCHEMA,
         )
