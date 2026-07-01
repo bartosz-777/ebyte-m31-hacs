@@ -10,8 +10,8 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_HOST, CONF_PORT
 from homeassistant.data_entry_flow import FlowResult
 
-from .const import (DEFAULT_HOST, DEFAULT_PORT, DOMAIN)
-from .hub import EbyteM31Hub, ModbusNotEnabledError
+from .const import (DEFAULT_HOST, DEFAULT_PORT, DOMAIN, )
+from .hub import EbyteM31Hub, ModbulsNotEnabledError
 
 _LOGGER = logging.getLogger(__name__)
 
