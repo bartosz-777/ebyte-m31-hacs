@@ -18,7 +18,7 @@ _LOGGER = logging.getLogger(__name__)
 class EbyteM31Coordinator(DataUpdateCoordinator[dict[str, bool]]):
     """Coordinate polling of the discrete input register values."""
 
-    def __init__(self, hass, hub: "EbyteM31Hub") -> None:
+    def __init__(self, hass: HomeAssistant, hub: EbyteM31Hub) -> None:
         super().__init__(
             hass,
             _LOGGER,

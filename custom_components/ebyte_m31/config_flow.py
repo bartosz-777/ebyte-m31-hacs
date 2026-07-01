@@ -10,15 +10,15 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_HOST, CONF_PORT
 from homeassistant.data_entry_flow import FlowResult
 
-from .const import DEFAULT_HOST, DEFAULT_PORT, DOMAIN
+from .const import (DEFAULT_HOST, DEFAULT_PORT, DOMAIN)
 from .hub import EbyteM31Hub, ModbusNotEnabledError
 
 _LOGGER = logging.getLogger(__name__)
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_HOST, default=DEFAULT_HOST): str,
-        vol.Required(CONF_PORT, default=DEFAULT_PORT): int,
+        vol.Required(CONF_HOST, default=DEFAULT_HOST): vol.All(str, vol.Length(min=1)),
+        vol.Required(CONF_PORT, default=DEFAULT_PORT): vol.Coerce(int),
     }
 )
 

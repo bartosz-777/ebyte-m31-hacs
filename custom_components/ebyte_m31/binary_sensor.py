@@ -18,8 +18,8 @@ async def async_setup_entry(
 ) -> None:
     coordinator: EbyteM31Coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
     async_add_entities(
-        EbyteM31BinarySensor(coordinator, entry.entry_id, definition)
-        for definition in BINARY_SENSOR_DEFINITIONS
+        EbyteM31BinarySensor(coordinator, entry.entry_id, defn)
+        for defn in BINARY_SENSOR_DEFINITIONS
     )
 
 
@@ -30,15 +30,15 @@ class EbyteM31BinarySensor(EbyteM31Entity, BinarySensorEntity):
         self,
         coordinator: EbyteM31Coordinator,
         entry_id: str,
-        definition: BinarySensorDefinition,
+        defn: BinarySensorDefinition,
     ) -> None:
-        super().__init__(coordinator, entry_id, definition.key, definition.name)
-        self._definition = definition
-        if definition.icon:
-            self._attr_icon = definition.icon
+        super().__init__(coordinator, entry_id, defn.key, defn.name)
+        self._defn = defn
+        if defn.icon:
+            self._attr_icon = defn.icon
 
     @property
     def is_on(self) -> bool | None:
         if self.coordinator.data is None:
             return None
-        return self.coordinator.data.get(self._definition.key)
+        return self.coordinator.data.get(self._defn.key)
