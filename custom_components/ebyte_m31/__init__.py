@@ -5,7 +5,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_HOST, CONF_PORT, Platform
 from homeassistant.core import HomeAssistant
 
-from .const import DOMAIN
+from .const import CONF_MODEL, DOMAIN
 from .coordinator import EbyteM31Coordinator
 from .hub import EbyteM31Hub
 
@@ -17,6 +17,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     config = {**entry.data, **entry.options}
     host = config[CONF_HOST]
     port = config[CONF_PORT]
+    model = config[CONF_MODEL]
 
     hub = EbyteM31Hub(host, port)
     coordinator = EbyteM31Coordinator(hass, hub)

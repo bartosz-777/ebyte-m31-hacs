@@ -7,7 +7,7 @@ import threading
 from pymodbus.client import ModbusTcpClient
 from pymodbus.exceptions import ModbusException
 
-from .const import MODBUS_ADDRESS, MODBUS_SLAVE
+from .const import MODBUS_ADDRESS, MODBUS_SLAVE, CONF_MODEL, bridgeModels
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ class EbyteM31Hub:
         except ModbusException as err:
             raise ModbusNotEnabledError(str(err)) from err
 
-    async def async_read_discrete_inputs(self, address: int = MODBUS_ADDRESS, count: int = 8) -> list[bool]:
+    async def async_read_discrete_inputs(self, address: int = MODBUS_ADDRESS, count: int = bridgeModels[CONF_MODEL]["digital_inputs"]) -> list[bool]:
         """Read discrete inputs from the configured Modbus address and slave."""
         await asyncio.to_thread(self._connect)
         with self._lock:
