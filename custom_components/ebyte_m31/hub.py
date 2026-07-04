@@ -61,7 +61,7 @@ class EbyteM31Hub:
         result = self._client.read_discrete_inputs(
             address=address,
             count=count,
-            slave=MODBUS_SLAVE,
+            device_id=MODBUS_SLAVE,
         )
         if result.isError():
             raise ModbusException(f"Error reading discrete inputs at {address}")
