@@ -1,11 +1,21 @@
 {
   "domain": "ebyte_m31",
   "name": "Ebyte M31",
-  "codeowners": ["@ebyte"],
+  "codeowners": ["@bartosz-777"],
   "config_flow": true,
   "documentation": "https://github.com/bartosz-777/ebyte-m31-hacs",
   "issue_tracker": "https://github.com/bartosz-777/ebyte-m31-hacs/issues",
   "iot_class": "local_polling",
   "requirements": ["pymodbus>=3.7.0"],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dhcp": [
+    {
+    "hostname": "Ebyte",
+    "macaddress": "c817f5*"
+    },
+    {
+    "hostname": "Ebyte*",
+    "macaddress": "c817f5*"
+    }
+  ]
 }
