@@ -17,7 +17,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     config = {**entry.data, **entry.options}
     host = config[CONF_HOST]
     port = config[CONF_PORT]
-    model = config[CONF_MODEL]
 
     hub = EbyteM31Hub(host, port)
     coordinator = EbyteM31Coordinator(hass, hub)
