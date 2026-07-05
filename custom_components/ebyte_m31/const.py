@@ -14,7 +14,7 @@ MODBUS_ADDRESS = 0
 MODBUS_SLAVE = 1
 DISCRETE_INPUT_COUNT = 8
 
-CONF_MODEL = "model"
+CONF_MODEL = 'XXAX0080G'
 
 @dataclass(frozen=True)
 class BinarySensorDefinition:
