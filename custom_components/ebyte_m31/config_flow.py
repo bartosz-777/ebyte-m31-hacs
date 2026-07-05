@@ -35,6 +35,7 @@ class EbyteM31ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             hub = EbyteM31Hub(user_input[CONF_HOST], user_input[CONF_PORT])
+            self._data[CONF_MODEL] = user_input[CONF_MODEL]
             try:
                 await hub.async_validate_modbus_protocol()
                 await self.async_set_unique_id(
