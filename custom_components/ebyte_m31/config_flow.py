@@ -20,7 +20,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_HOST, default=DEFAULT_HOST): vol.All(str, vol.Length(min=1)),
         vol.Required(CONF_PORT, default=DEFAULT_PORT): vol.Coerce(int),
-        vol.Required("model"): vol.In([list(bridgeModels.keys())]),
+        vol.Required(CONF_MODEL): vol.In([list(bridgeModels.keys())]),
     }
 )
 
