@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
-from .const import DOMAIN, bridgeModels, CONF_MODEL
+from .const import DOMAIN, bridgeModels, CONF_MODEL, CONF_INPUTS, CONF_OUTPUTS, CONF_FLIP_INPUTS, CONF_FLIP_OUTPUTS
 
 if TYPE_CHECKING:
     from .hub import EbyteM31Hub
@@ -28,5 +28,6 @@ class EbyteM31Coordinator(DataUpdateCoordinator[dict[str, bool]]):
         self.hub = hub
 
     async def _async_update_data(self) -> dict[str, bool]:
-        values = await self.hub.async_read_discrete_inputs(count=bridgeModels[CONF_MODEL]["digital_inputs"])
+        values = await self.hub.async_read_discrete_inputs(count=CONF_INPUTS)
         return {f"input_{index}": bool(value) for index, value in enumerate(values)}
+#bridgeModels[CONF_MODEL]["digital_inputs"]

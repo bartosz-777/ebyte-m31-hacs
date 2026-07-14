@@ -11,7 +11,7 @@ from homeassistant.const import CONF_HOST, CONF_PORT
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import FlowResult
 
-from .const import DEFAULT_HOST, DEFAULT_PORT, DOMAIN, bridgeModels, CONF_MODEL
+from .const import DEFAULT_HOST, DEFAULT_PORT, DOMAIN, bridgeModels, CONF_MODEL, CONF_INPUTS, CONF_OUTPUTS, CONF_FLIP_INPUTS, CONF_FLIP_OUTPUTS
 from .hub import EbyteM31Hub, ModbusNotEnabledError
 
 _LOGGER = logging.getLogger(__name__)
@@ -21,6 +21,10 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
         vol.Required(CONF_HOST, default=DEFAULT_HOST): vol.All(str, vol.Length(min=1)),
         vol.Required(CONF_PORT, default=DEFAULT_PORT): vol.Coerce(int),
         vol.Required(CONF_MODEL): vol.In(list(bridgeModels.keys())),
+        vol.Required(CONF_INPUTS, default=8): vol.All(vol.Coerce(int), vol.Range(min=1, max=256)),
+        vol.Optional(FLIP_INPUTS, default=False): bool,
+        vol.Required(CONF_OUTPUTS, default=8): vol.All(vol.Coerce(int), vol.Range(min=1, max=256)),
+        vol.Optional(FLIP_OUTPUTS, default=False): bool,
     }
 )
 

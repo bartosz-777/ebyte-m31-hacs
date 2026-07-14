@@ -15,6 +15,10 @@ MODBUS_SLAVE = 1
 DISCRETE_INPUT_COUNT = 8
 
 CONF_MODEL = ""
+CONF_INPUTS = 8
+CONF_OUTPUTS = 8
+CONF_FLIP_INPUTS = False
+CONF_FLIP_OUTPUTS = False
 
 @dataclass(frozen=True)
 class BinarySensorDefinition:
