@@ -22,9 +22,9 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
         vol.Required(CONF_PORT, default=DEFAULT_PORT): vol.Coerce(int),
         vol.Required(CONF_MODEL): vol.In(list(bridgeModels.keys())),
         vol.Required(CONF_INPUTS, default=8): vol.All(vol.Coerce(int), vol.Range(min=1, max=256)),
-        vol.Optional(FLIP_INPUTS, default=False): bool,
+        vol.Optional(CONF_FLIP_INPUTS, default=False): bool,
         vol.Required(CONF_OUTPUTS, default=8): vol.All(vol.Coerce(int), vol.Range(min=1, max=256)),
-        vol.Optional(FLIP_OUTPUTS, default=False): bool,
+        vol.Optional(CONF_FLIP_OUTPUTS, default=False): bool,
     }
 )
 
